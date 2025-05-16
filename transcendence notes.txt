@@ -1,0 +1,61 @@
+folder structure:
+pong-game/
+├── docker-compose.yml
+├── .env
+├── README.md
+├── nginx/
+│   ├── default.conf
+│   └── ssl/
+│       ├── cert.pem
+│       └── key.pem
+├── frontend/
+│   ├── Dockerfile
+│   ├── package.json
+│   ├── tsconfig.json
+│   └── src/
+│       ├── assets/
+│       ├── components/
+│       ├── views/
+│       └── main.ts
+├── auth-service/
+│   ├── Dockerfile
+│   ├── package.json
+│   └── src/
+│       ├── index.ts
+│       ├── routes/
+│       └── utils/
+├── user-service/
+│   ├── Dockerfile
+│   ├── package.json
+│   └── src/
+│       ├── index.ts
+│       ├── models/
+│       └── routes/
+├── game-service/
+│   ├── Dockerfile
+│   ├── package.json
+│   └── src/
+│       ├── index.ts
+│       ├── ws/
+│       ├── logic/
+│       └── routes/
+├── tournament-service/
+│   ├── Dockerfile
+│   ├── package.json
+│   └── src/
+│       ├── index.ts
+│       └── routes/
+├── ai-service/
+│   ├── Dockerfile
+│   ├── package.json
+│   └── src/
+│       ├── index.ts
+│       ├── logic/
+│       └── config/
+├── shared/
+│   ├── database/
+│   │   └── sqlite.db
+│   └── utils/
+│       └── jwt.ts
+└── scripts/
+    └── setup.sh
