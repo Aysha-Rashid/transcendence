@@ -1,0 +1,31 @@
+version: "3.9"
+services:
+  frontend:
+    build:
+      context: .
+      Dockerfile: ./frontend/Dockerfile
+    container_name: frontend
+  database:
+    build:
+      context: .
+      Dockerfile: ./backend/database/Dockerfile
+    container_name: database
+    depends_on:
+      - frontend
+  
+  volume:
+    frontend: 
+  # auth-service:
+  #   build:
+  #     context: .
+  #     Dockerfile: ./backend/auth-service/Dockerfile
+  #   container_name: auth-service
+  #   depends_on:
+  #     - database
+  # user-service:
+  #   build:
+  #     context: .
+  #     Dockerfile: ./backend/user-service/Dockerfile
+  #   container_name: user-service
+  #   depends_on:
+  #     - database
