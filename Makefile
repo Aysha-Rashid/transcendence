@@ -1,6 +1,6 @@
-NAME= apotheosis
+NAME=apotheosis
 
-$(NAME):
+$(NAME): start-docker
 	docker-compose -f ./docker-compose.yml up --build -d
 
 all: start-docker $(NAME)
@@ -14,11 +14,6 @@ start-docker:
 		echo "Still waiting for Docker..."; \
 	done
 	@echo "✅ Docker is running!"
-
-# check-docker:
-# 	@docker info > /dev/null 2>&1 || (echo "❌ Docker is not running! Start Docker Desktop and try again."; exit 1)
-
-
 clean:
 	docker-compose -f ./docker-compose.yml down --rmi all -v --remove-orphans 2>/dev/null || true
 

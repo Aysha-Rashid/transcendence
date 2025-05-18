@@ -3,18 +3,17 @@ services:
   frontend:
     build:
       context: .
-      Dockerfile: ./frontend/Dockerfile
+      dockerfile: ./frontend/Dockerfile
     container_name: frontend
-  database:
-    build:
-      context: .
-      Dockerfile: ./backend/database/Dockerfile
-    container_name: database
-    depends_on:
-      - frontend
-  
-  volume:
-    frontend: 
+  # database:
+  #   build:
+  #     context: .
+  #     dockerfile: ./backend/database/Dockerfile
+  #   container_name: database
+  #   depends_on:
+  #     - frontend
+  # volume:
+  #   frontend: 
   # auth-service:
   #   build:
   #     context: .

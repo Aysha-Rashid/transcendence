@@ -1,25 +1,23 @@
-# Step 1: Build the app
-FROM node
+# Stage 1: Build with Vite
+FROM node:18 AS builder
 
-# Set working directory inside container
 WORKDIR /app
 
-# Copy project files
-# COPY package*.json ./
+COPY ./frontend/src /app/src
+COPY ./frontend/package*.json /app
+COPY ./frontend/public/ /app/public
+COPY ./frontend/index.html /app/
+
 # COPY tsconfig.json ./
-# COPY vite.config.* ./
-# COPY src ./src
-# COPY public ./public
-# RUN docker run --rm -it \
-#   -v "$PWD":/app \
-#   -w /app \
-#   node:18 \
-#   npm init -y
-  # Install dependencies
-  RUN npm install
-  
-  # Build the project
-  RUN npm run build
+# COPY tailwind.config.js ./
+# COPY postcss.config.js ./
+# COPY vite.config.ts ./
+# COPY index.html ./
+# COPY ./src ./
+# COPY . .
 
-
-# ENTRYPOINT [ "npx", "create-vite", "." ]
+RUN npm install
+RUN npm install vite
+CMD ["npm", "run", "dev"]
+# RUN npm run dev
+# RUN npm run dev
