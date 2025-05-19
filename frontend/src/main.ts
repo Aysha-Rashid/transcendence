@@ -3,18 +3,20 @@ import '../style.css';
 const root = document.getElementById('root')!;
 
 root.innerHTML = `
-<div class="bg-black min-h-screen text-white w-full flex flex-col items-center justify-center space-y-9 p-8">
+<div class="bg-black min-h-screen text-white w-full flex flex-col items-center p-8">
+  <div class="flex-grow flex flex-col items-center justify-center space-y-12">
   <div class="text-center">
-    <h1 class="text-5xl font-bold mb-8">PingPong</h1>
-    <p class="text-lg">Playable game built only with variables and conditions.</p>
+    <h1 class="text-5xl font-bold font-mono mb-8">PingPong</h1>
+    <p class="text-lg font-mono ">Playable game built only with variables and conditions.</p>
   </div>
   <div></div>
-  <div class="flex space-x-6">
-    <button class="bg-white text-black px-10 py-1 hover:bg-gray-200 transition">Login</button>
-    <button class="bg-white text-black px-10 py-1 hover:bg-gray-200 transition">Register</button>
+  <div class="flex space-x-12">
+    <button class="bg-white font-mono text-black px-12 py-1 hover:bg-gray-200 transition">Login</button>
+    <button class="bg-white font-mono text-black px-12 py-1 hover:bg-gray-200 transition">Register</button>
+  </div>
   </div>
 
-  <div class="text-sm text-center">
+  <div class="text-sm font-mono text-center mt-auto">
     <p>Testing</p>
   </div>
 </div>
