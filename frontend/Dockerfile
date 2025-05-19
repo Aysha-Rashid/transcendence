@@ -5,7 +5,7 @@ WORKDIR /app
 COPY ./frontend/package*.json ./
 
 RUN npm install
-RUN npm install -D vite
+RUN npm install -D vite tailwindcss postcss autoprefixer
 
 COPY ./frontend/ .
 

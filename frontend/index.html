@@ -2,30 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/Group.png" />
+    <link rel="icon" href="/Group.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PingPong</title>
-    <!-- Include Tailwind CSS via CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body class="bg-black text-white flex flex-col items-center justify-between h-screen p-8">
-    <!-- Title and Subtitle -->
-    <div class="text-center">
-      <h1 class="text-5xl font-bold mb-4">PingPong</h1>
-      <p class="text-lg">Playable game built only with variables and conditions.</p>
-    </div>
-
-    <!-- Buttons -->
-    <div class="flex space-x-4">
-      <button class="bg-white text-black px-6 py-2 rounded hover:bg-gray-200 transition">Login</button>
-      <button class="bg-white text-black px-6 py-2 rounded hover:bg-gray-200 transition">Register</button>
-    </div>
-
-    <!-- Version Info -->
-    <div class="text-sm">
-      <p>Testing</p>
-    </div>
-
+    <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
