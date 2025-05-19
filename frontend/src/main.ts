@@ -1,8 +1,8 @@
 import './style.css';
 
-const app = document.getElementById('app')!;
+const root = document.getElementById('root')!;
 
-app.innerHTML = `
+root.innerHTML = `
   <div class="text-center">
     <h1 class="text-5xl font-bold mb-4">PingPong</h1>
     <p class="text-lg">Playable game built only with variables and conditions.</p>
