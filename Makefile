@@ -3,7 +3,7 @@ NAME=apotheosis
 $(NAME): start-docker
 	docker-compose -f ./docker-compose.yml up --build -d
 
-all: start-docker $(NAME)
+all: $(NAME)
 
 start-docker:
 	@echo "🚀 Starting Docker Desktop..."
@@ -15,7 +15,14 @@ start-docker:
 	done
 	@echo "✅ Docker is running!"
 clean:
-	docker-compose -f ./docker-compose.yml down --rmi all -v --remove-orphans 2>/dev/null || true
+	@containers=$$(docker ps -aq); \
+	if [ -n "$$containers" ]; then \
+		docker stop $$containers && docker rm -f $$containers; \
+		echo "Removing all the containers."; \
+	else \
+		echo "No containers to stop/remove."; \
+	fi
+	@docker-compose -f ./docker-compose.yml down --rmi all -v --remove-orphans 2>/dev/null || true
 
 fclean: clean
 	docker rmi -f $$(docker images -a -q) 2> /dev/null || true

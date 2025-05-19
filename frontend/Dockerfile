@@ -1,23 +1,14 @@
-# Stage 1: Build with Vite
-FROM node:18 AS builder
+FROM node:18
 
 WORKDIR /app
 
-COPY ./frontend/src /app/src
-COPY ./frontend/package*.json /app
-COPY ./frontend/public/ /app/public
-COPY ./frontend/index.html /app/
-
-# COPY tsconfig.json ./
-# COPY tailwind.config.js ./
-# COPY postcss.config.js ./
-# COPY vite.config.ts ./
-# COPY index.html ./
-# COPY ./src ./
-# COPY . .
+COPY ./frontend/package*.json ./
 
 RUN npm install
-RUN npm install vite
+RUN npm install -D vite
+
+COPY ./frontend/ .
+
+EXPOSE 5000
+
 CMD ["npm", "run", "dev"]
-# RUN npm run dev
-# RUN npm run dev

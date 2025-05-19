@@ -1,25 +1,16 @@
 import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.ts'
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <h1> HELLO </h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('PingPong page loaded');
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+  const loginButton = document.querySelector('button:nth-child(1)');
+  const registerButton = document.querySelector('button:nth-child(2)');
+
+  loginButton?.addEventListener('click', () => {
+    alert('Login button clicked!');
+  });
+
+  registerButton?.addEventListener('click', () => {
+    alert('Register button clicked!');
+  });
+});
