@@ -9,6 +9,6 @@ RUN npm install -D vite tailwindcss postcss autoprefixer
 
 COPY ./frontend/ .
 
-EXPOSE 5000
+EXPOSE 3000
 
 CMD ["npm", "run", "dev"]

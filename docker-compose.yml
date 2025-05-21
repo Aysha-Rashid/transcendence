@@ -5,13 +5,18 @@ services:
       context: .
       dockerfile: ./frontend/Dockerfile
     ports:
-      - "5000:5000"
+      - "3000:3000"
     volumes:
       - ./frontend:/app
       - /app/node_modules
-
     working_dir: /app
     container_name: frontend
+  auth-service:
+    build:
+      context: .
+      dockerfile: ./backend/auth-service/Dockerfile
+    working_dir: /app
+    container_name: auth-service
   # database:
   #   build:
   #     context: .
@@ -21,13 +26,8 @@ services:
   #     - frontend
   # volume:
   #   frontend: 
-  # auth-service:
-  #   build:
-  #     context: .
-  #     Dockerfile: ./backend/auth-service/Dockerfile
-  #   container_name: auth-service
-  #   depends_on:
-  #     - database
+    # depends_on:
+    #   - database
   # user-service:
   #   build:
   #     context: .
