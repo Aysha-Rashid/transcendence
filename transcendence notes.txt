@@ -1,64 +1,44 @@
 folder structure:
-pong-game/
+pong-app/
+├── frontend/
+│   ├── src/
+│   |   ├── pages/                   # Page-specific logic for each feature module
+│   |   │   ├── auth.ts              # Authentication interface (login, register, profile)
+│   |   │   ├── game.ts              # Game interface (Pong, multiplayer, AI)
+│   |   │   ├── breakout.ts          # Second game interface (e.g., Breakout)
+│   |   │   ├── tournament.ts        # Tournament and matchmaking interface
+│   |   │   └── stats.ts             # Stats dashboard interface
+│   |   ├── utils/                   # Shared frontend utilities
+│   |   │   ├── api.ts               # API fetch helpers
+│   |   │   ├── websocket.ts         # WebSocket client for real-time gameplay
+│   |   │   └── router.ts            # SPA routing logic (History API)
+│   |   ├── main.ts                  # Entry point (initializes routing and app)
+│   |   ├── input.css                # Tailwind CSS input
+│   |   └── assets/                  # Static assets
+│   │── public/
+│   |   └── index.html
+│   │── dist/
+│   │── package.json
+│   │── tsconfig.json
+│   │── tailwind.config.js
+|   └── Dockerfile
+├── backend/
+│   ├── src/
+│   │   ├── index.js
+│   │   ├── routes/
+│   │   │   ├── auth.js
+│   │   │   ├── game.js
+│   │   │   ├── tournament.js
+│   │   │   └── stats.js
+│   │   ├── models/
+│   │   ├── database.js
+│   │   ├── websocket.js
+│   │   └── utils/
+│   ├── package.json
+│   └── Dockerfile
+├── shared/
 ├── docker-compose.yml
 ├── .env
-├── README.md
-├── nginx/
-│   ├── default.conf
-│   └── ssl/
-│       ├── cert.pem
-│       └── key.pem
-├── frontend/
-│   ├── Dockerfile
-│   ├── package.json
-│   ├── tsconfig.json
-│   └── src/
-│       ├── assets/
-│       ├── components/
-│       ├── views/
-│       └── main.ts
-├── auth-service/
-│   ├── Dockerfile
-│   ├── package.json
-│   └── src/
-│       ├── index.ts
-│       ├── routes/
-│       └── utils/
-├── user-service/
-│   ├── Dockerfile
-│   ├── package.json
-│   └── src/
-│       ├── index.ts
-│       ├── models/
-│       └── routes/
-├── game-service/
-│   ├── Dockerfile
-│   ├── package.json
-│   └── src/
-│       ├── index.ts
-│       ├── ws/
-│       ├── logic/
-│       └── routes/
-├── tournament-service/
-│   ├── Dockerfile
-│   ├── package.json
-│   └── src/
-│       ├── index.ts
-│       └── routes/
-├── ai-service/
-│   ├── Dockerfile
-│   ├── package.json
-│   └── src/
-│       ├── index.ts
-│       ├── logic/
-│       └── config/
-├── shared/
-│   ├── database/
-│   │   └── sqlite.db
-│   └── utils/
-│       └── jwt.ts
-└── scripts/
-    └── setup.sh
+└── .gitignore
 
-
-The frontend is on port: 5000 (for now) - testing
+The frontend is on port: 3000 (for now) - testing

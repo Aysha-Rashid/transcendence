@@ -1,4 +1,4 @@
-import '../style.css';
+import './input.css';
 
 type UserType = {
 	UserName: string;

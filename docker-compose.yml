@@ -11,12 +11,12 @@ services:
       - /app/node_modules
     working_dir: /app
     container_name: frontend
-  auth-service:
-    build:
-      context: .
-      dockerfile: ./backend/auth-service/Dockerfile
-    working_dir: /app
-    container_name: auth-service
+  # backend:
+  #   build:
+  #     context: .
+  #     dockerfile: ./backend/Dockerfile
+  #   working_dir: /app
+  #   container_name: backend
   # database:
   #   build:
   #     context: .
