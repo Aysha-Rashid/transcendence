@@ -2,13 +2,14 @@ FROM node:18
 
 WORKDIR /app
 
-# RUN npm install
-# RUN npm install -D vite tailwindcss postcss autoprefixer
-# RUN npm init
-CMD ["npm", "init"]
-# COPY /backend/certificates/ /app/certificates/
-# COPY ./backend/auth-service ./
-# COPY ./frontend/ .
+COPY ./backend/package*.json ./
 
-EXPOSE 3000
+RUN apt update && apt install sqlite3
+RUN npm install
+RUN npm install fastify sqlite3 sqlite bcrypt jsonwebtoken dotenv
 
+COPY ./backend/* /app/
+
+EXPOSE 5000
+
+CMD ["node", "src/index.js"]

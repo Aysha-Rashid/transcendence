@@ -11,12 +11,17 @@ services:
       - /app/node_modules
     working_dir: /app
     container_name: frontend
-  # backend:
-  #   build:
-  #     context: .
-  #     dockerfile: ./backend/Dockerfile
-  #   working_dir: /app
-  #   container_name: backend
+  backend:
+    build:
+      context: .
+      dockerfile: ./backend/Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    working_dir: /app
+    container_name: backend
   # database:
   #   build:
   #     context: .

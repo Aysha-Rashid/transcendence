@@ -1,32 +1,33 @@
 import './input.css';
+import { showLoginForm} from './pages/auth.ts'
+import {showRegisterForm} from './pages/auth.ts'
+// type UserType = {
+// 	UserName: string;
+// 	Password: string;
+// 	retire: (date: Date) => void;
+// };
 
-type UserType = {
-	UserName: string;
-	Password: string;
-	retire: (date: Date) => void;
-};
+// const User: UserType = {
+// 	UserName: "",
+// 	Password: "",
+// 	retire: (date: Date) => {
+// 		console.log("Retiring on", date);
+// 	}
+// };
 
-const User: UserType = {
-	UserName: "",
-	Password: "",
-	retire: (date: Date) => {
-		console.log("Retiring on", date);
-	}
-};
+// function store(UserName: string, Password: string) {
+// 	if (UserName && Password) {
+// 		User.UserName = UserName;
+// 		User.Password = Password;
+// 		console.log("User stored:", User);
+// 	} else {
+// 		console.error("Username and password are required");
+// 	}
+// }
 
-function store(UserName: string, Password: string) {
-	if (UserName && Password) {
-		User.UserName = UserName;
-		User.Password = Password;
-		console.log("User stored:", User);
-	} else {
-		console.error("Username and password are required");
-	}
-}
+export const root = document.getElementById('root')!;
 
-const root = document.getElementById('root')!;
-
-function homepage(){
+export function homepage(){
 	root.innerHTML = 
 	`<div class="bg-black min-h-screen text-white w-full flex flex-col items-center p-8">
 		<div class="flex-grow flex flex-col items-center justify-center space-y-12">
@@ -51,67 +52,67 @@ function homepage(){
 
 }
 
-function showLoginForm()
-{
-	root.innerHTML = 
-	`<div class="bg-black min-h-screen text-white w-full flex flex-col items-center p-8">
-		<div class="flex-grow flex flex-col items-center justify-center space-y-12">
-			<div class="text-center">
-				<h1 class="text-5xl font-bold font-mono mb-8">PingPong</h1>
-				<p class="text-lg font-mono ">Playable game built only with variables and conditions.</p>
-			</div>
+// export function showLoginForm()
+// {
+// 	root.innerHTML = 
+// 	`<div class="bg-black min-h-screen text-white w-full flex flex-col items-center p-8">
+// 		<div class="flex-grow flex flex-col items-center justify-center space-y-12">
+// 			<div class="text-center">
+// 				<h1 class="text-5xl font-bold font-mono mb-8">PingPong</h1>
+// 				<p class="text-lg font-mono ">Playable game built only with variables and conditions.</p>
+// 			</div>
 	
-			<form id="loginForm" class="flex flex-col space-y-4">
-				<input type="text" id="username" placeholder="Username" class="text-black p-2" required>
-				<input type="password" id="password" placeholder="Password" class="text-black p-2" required>
-				<button type="submit" class="bg-white font-mono text-black px-12 py-1 hover:bg-gray-200 transition">Login</button>
-				<button type="button" id="backBtn" class="mt-4 text-white underline font-mono">← Back</button>
-			</form>
-		</div>
+// 			<form id="loginForm" class="flex flex-col space-y-4">
+// 				<input type="text" id="username" placeholder="Username" class="text-black p-2" required>
+// 				<input type="password" id="password" placeholder="Password" class="text-black p-2" required>
+// 				<button type="submit" class="bg-white font-mono text-black px-12 py-1 hover:bg-gray-200 transition">Login</button>
+// 				<button type="button" id="backBtn" class="mt-4 text-white underline font-mono">← Back</button>
+// 			</form>
+// 		</div>
 	
-		<div class="text-sm font-mono text-center mt-auto">
-			<p>Testing</p>
-		</div>
-	</div>`
-	;
-	document.getElementById("loginForm")?.addEventListener("submit", (e) => {
-		e.preventDefault();
-		const username = (document.getElementById("username") as HTMLInputElement).value;
-		const password = (document.getElementById("password") as HTMLInputElement).value;
-		store(username, password);
-	});
-	document.getElementById("backBtn")?.addEventListener("click", homepage);
-}
+// 		<div class="text-sm font-mono text-center mt-auto">
+// 			<p>Testing</p>
+// 		</div>
+// 	</div>`
+// 	;
+// 	document.getElementById("loginForm")?.addEventListener("submit", (e) => {
+// 		e.preventDefault();
+// 		const username = (document.getElementById("username") as HTMLInputElement).value;
+// 		const password = (document.getElementById("password") as HTMLInputElement).value;
+// 		store(username, password);
+// 	});
+// 	document.getElementById("backBtn")?.addEventListener("click", homepage);
+// }
 
-function showRegisterForm()
-{
-	root.innerHTML = 
-	`<div class="bg-black min-h-screen text-white w-full flex flex-col items-center p-8">
-		<div class="flex-grow flex flex-col items-center justify-center space-y-12">
-			<div class="text-center">
-				<h1 class="text-5xl font-bold font-mono mb-8">PingPong</h1>
-				<p class="text-lg font-mono ">Playable game built only with variables and conditions.</p>
-			</div>
+// export function showRegisterForm()
+// {
+// 	root.innerHTML = 
+// 	`<div class="bg-black min-h-screen text-white w-full flex flex-col items-center p-8">
+// 		<div class="flex-grow flex flex-col items-center justify-center space-y-12">
+// 			<div class="text-center">
+// 				<h1 class="text-5xl font-bold font-mono mb-8">PingPong</h1>
+// 				<p class="text-lg font-mono ">Playable game built only with variables and conditions.</p>
+// 			</div>
 	
-			<form id="registerForm" class="flex flex-col space-y-4">
-				<input type="text" id="username" placeholder="Username" class="text-black p-2" required>
-				<input type="password" id="password" placeholder="Password" class="text-black p-2" required>
-				<button type="submit" class="bg-white font-mono text-black px-12 py-1 hover:bg-gray-200 transition">Register</button>
-				<button type="button" id="backBtn" class="mt-4 text-white underline font-mono">← Back</button>
-			</form>
-		</div>
+// 			<form id="registerForm" class="flex flex-col space-y-4">
+// 				<input type="text" id="username" placeholder="Username" class="text-black p-2" required>
+// 				<input type="password" id="password" placeholder="Password" class="text-black p-2" required>
+// 				<button type="submit" class="bg-white font-mono text-black px-12 py-1 hover:bg-gray-200 transition">Register</button>
+// 				<button type="button" id="backBtn" class="mt-4 text-white underline font-mono">← Back</button>
+// 			</form>
+// 		</div>
 	
-		<div class="text-sm font-mono text-center mt-auto">
-			<p>Testing</p>
-		</div>
-	</div>`
-	;
-	document.getElementById("registerForm")?.addEventListener("submit", (e) => {
-		e.preventDefault();
-		const username = (document.getElementById("username") as HTMLInputElement).value;
-		const password = (document.getElementById("password") as HTMLInputElement).value;
-		store(username, password);
-	});
-	document.getElementById("backBtn")?.addEventListener("click", homepage);
-}
+// 		<div class="text-sm font-mono text-center mt-auto">
+// 			<p>Testing</p>
+// 		</div>
+// 	</div>`
+// 	;
+// 	document.getElementById("registerForm")?.addEventListener("submit", (e) => {
+// 		e.preventDefault();
+// 		const username = (document.getElementById("username") as HTMLInputElement).value;
+// 		const password = (document.getElementById("password") as HTMLInputElement).value;
+// 		store(username, password);
+// 	});
+// 	document.getElementById("backBtn")?.addEventListener("click", homepage);
+// }
 homepage();

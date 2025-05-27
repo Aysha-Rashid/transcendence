@@ -5,18 +5,18 @@ $(NAME): start-docker
 
 all: $(NAME)
 
-# start-docker:
-# 	@echo "🚀 Starting Docker Desktop..."
-# 	@open -a Docker
-# 	@echo "⏳ Waiting for Docker to be ready..."
-# 	@until docker ps > /dev/null 2>&1; do \
-# 		sleep 1; \
-# 		echo "Still waiting for Docker..."; \
-# 	done
-# 	@echo "✅ Docker is running!"
-
 start-docker:
-	cmd /C ":loop & docker info > nul 2>&1"
+	@echo "🚀 Starting Docker Desktop..."
+	@open -a Docker
+	@echo "⏳ Waiting for Docker to be ready..."
+	@until docker ps > /dev/null 2>&1; do \
+		sleep 1; \
+		echo "Still waiting for Docker..."; \
+	done
+	@echo "✅ Docker is running!"
+
+# start-docker:
+# 	cmd /C ":loop & docker info > nul 2>&1"
 clean:
 	@containers=$$(docker ps -aq); \
 	if [ -n "$$containers" ]; then \
