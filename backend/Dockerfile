@@ -12,4 +12,4 @@ COPY ./backend/* /app/
 
 EXPOSE 5000
 
-CMD ["node", "src/index.js"]
+CMD ["node", "src/database.js"]

@@ -1,3 +1,4 @@
+
 const sqlite3 = require('sqlite3').verbose();
 const bcrypt = require('bcrypt');
 
@@ -25,7 +26,7 @@ initDatabase();
 
 const insertUser = () => {
   const sql = `INSERT INTO users (username, password, email) VALUES (?, ?, ?)`;
-  db.run(sql, ['hello', 'brother', 'password'], (err) => {
+  db.run(sql, ['dgfdgfh', 'fdhgfhgfh', 'dfgfhgfh'], (err) => {
     if (err) console.error('Insert error:', err.message);
   });
 };
@@ -50,3 +51,20 @@ module.exports = {
   hashPassword,
   verifyPassword,
 };
+
+// require('dotenv').config();
+
+// const fastify = require('fastify')({ logger: true });
+
+// // fastify.register(require('@fastify/websocket'));
+
+// // fastify.register(require('./routes/auth'));
+// // fastify.register(require('./routes/websocket'));
+
+// fastify.listen({ port: 5000, host: '0.0.0.0' }, (err) => {
+//   if (err) {
+//     fastify.log.error(err);
+//     process.exit(1);
+//   }
+//   fastify.log.info('Server listening on 0.0.0.0:5000');
+// });
