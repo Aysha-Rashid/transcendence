@@ -20,6 +20,7 @@ services:
     volumes:
       - ./backend:/app
       - /app/node_modules
+      - ./backend/sqlite3.db:/app/sqlite3.db
     working_dir: /app
     container_name: backend
   # database:

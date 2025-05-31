@@ -4,12 +4,13 @@ WORKDIR /app
 
 COPY ./backend/package*.json ./
 
-RUN apt update && apt install sqlite3
-RUN npm install
-RUN npm install fastify sqlite3 sqlite bcrypt jsonwebtoken dotenv
+RUN apt update
 
-COPY ./backend/* /app/
+RUN npm install
+RUN npm install fastify sqlite3 bcrypt jsonwebtoken dotenv
+
+COPY ./backend/ /app/
 
 EXPOSE 5000
 
-CMD ["node", "src/database.js"]
+CMD ["node", "./src/database.js"]
