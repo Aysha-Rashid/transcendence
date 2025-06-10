@@ -1,18 +1,39 @@
 require('dotenv').config();
+const fs = require('fs');
+const path = require('path');
+const { execSync } = require('child_process');
 
-const fastify = require('fastify')({ logger: true });
+const certDir = path.join(__dirname, '../cert/'); // Move up two levels to rootconsole.log(__dirname);
+const keyPath = path.join(certDir, 'key.pem');
+const certPath = path.join(certDir, 'cert.pem');
+console.log(keyPath);
 
-// fastify.register(require('@fastify/websocket'));
+// Generate SSL certificates if they don't exist
+// if (!fs.existsSync(keyPath) || !fs.existsSync(certPath)) {
+//   console.log('Generating SSL certificate...');
+//   fs.mkdirSync(certDir, { recursive: true });
 
-// fastify.register(require('./routes/auth'));
-// fastify.register(require('./routes/websocket'));
+//   execSync(`openssl req -x509 -newkey rsa:2048 -days 365 -nodes \
+//     -keyout ${keyPath} -out ${certPath} -subj "/CN=ayal-ras"`, { stdio: 'inherit' });
+
+//   console.log('SSL certificate generated at /cert');
+// }
+
+// Now start Fastify with HTTPS
+const fastify = require('fastify')({
+  logger: true,
+  https: {
+    key: fs.readFileSync(keyPath),
+    cert: fs.readFileSync(certPath),
+  },
+});
 
 const cors = require('@fastify/cors');
 
-// Register the CORS plugin BEFORE routes
 fastify.register(cors, {
-  origin: true, // Allow all origins
+  origin: 'https://localhost:3000', // Allow all origins
   methods: ['GET', 'POST', 'OPTIONS'], // Allow preflight requests
+  allowedHeaders: ['Content-Type'],
 });
 
 const authRoutes = require('./routes/auth');
@@ -22,7 +43,6 @@ fastify.register(authRoutes);
 fastify.get('/', async (request, reply) => {
   return { message: 'API is working' };
 });
-
 
 fastify.listen({ port: 5000, host: '0.0.0.0' }, (err) => {
   if (err) {

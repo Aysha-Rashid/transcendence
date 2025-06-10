@@ -5,10 +5,17 @@ services:
       context: .
       dockerfile: ./frontend/Dockerfile
     ports:
-      - "3000:3000"
+      - "3000:3000"  # Map host 3000 to container 3000
+    networks:
+      - app-network
     volumes:
+      - ./cert:/app/cert
       - ./frontend:/app
       - /app/node_modules
+    depends_on:
+      - backend
+    env_file:
+      ./.env
     working_dir: /app
     container_name: frontend
   backend:
@@ -18,26 +25,16 @@ services:
     ports:
       - "5000:5000"
     volumes:
+      - ./backend/sqlite3.db:/app/sqlite3.db 
+      - ./cert:/app/cert
       - ./backend:/app
       - /app/node_modules
-      - ./backend/sqlite3.db:/app/sqlite3.db
+    networks:
+      - app-network
+    env_file:
+      ./.env
     working_dir: /app
     container_name: backend
-  # database:
-  #   build:
-  #     context: .
-  #     dockerfile: ./backend/database/Dockerfile
-  #   container_name: database
-  #   depends_on:
-  #     - frontend
-  # volume:
-  #   frontend: 
-    # depends_on:
-    #   - database
-  # user-service:
-  #   build:
-  #     context: .
-  #     Dockerfile: ./backend/user-service/Dockerfile
-  #   container_name: user-service
-  #   depends_on:
-  #     - database
+networks:
+  app-network:
+    driver: bridge

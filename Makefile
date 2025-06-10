@@ -1,6 +1,8 @@
 NAME=apotheosis
 
 $(NAME): start-docker
+	chmod +x generate_cert.sh
+	./generate_cert.sh
 	docker-compose -f ./docker-compose.yml up --build -d
 
 all: $(NAME)
@@ -17,10 +19,14 @@ start-docker:
 
 # start-docker:
 # 	cmd /C ":loop & docker info > nul 2>&1"
+
 clean:
 	@containers=$$(docker ps -aq); \
 	if [ -n "$$containers" ]; then \
 		docker stop $$containers && docker rm -f $$containers; \
+		rm -rf cert; \
+		rm -rf ./backend/cert;\
+		rm -rf ./frontend/cert;\
 		echo "Removing all the containers."; \
 	else \
 		echo "No containers to stop/remove."; \

@@ -8,6 +8,18 @@ const db = new sqlite3.Database('./sqlite3.db', sqlite3.OPEN_READWRITE | sqlite3
   console.log('Connected to SQLite database');
 });
 
+// to delete the user from the database
+// const delet = () =>{
+//   const del = `DELETE FROM users WHERE id = 2`;
+
+//   db.run(del, (err) => {
+//     if (err) console.error('Table creation error:', err.message);
+//   });
+// }
+// delet();
+
+
+
 // Initialize the database schema
 const initDatabase = () => {
   const sql = `CREATE TABLE IF NOT EXISTS users (

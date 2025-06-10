@@ -1,4 +1,21 @@
-@import "tailwindcss";
+/* @import "tailwindcss"; */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap'); */
+
+/* Custom styles */
+/* body {
+  font-family: 'Roboto Mono', monospace; */
+  /* color: black; */
+  /* background-color: black;
+  color:white;
+
+} */
+
+/* body {
+  font-family: 'Roboto Mono', monospace;
+  color: white;
+  background-color: black;
+} */

@@ -22,12 +22,15 @@ function store(username: string, password: string) {
 	const isRegisterForm = document.getElementById("registerForm") !== null;
 	const endpoint = isRegisterForm ? "/register" : "/login";
   
-	fetch(`http://localhost:5000${endpoint}`, {
+	fetch(`https://localhost:5000${endpoint}`, {
 	  method: "POST",
 	  headers: {
 		"Content-Type": "application/json",
 	  },
 	  body: JSON.stringify({ username, password }), // ✅ use lowercase keys
+	//   agent: new (require('https').Agent)({
+	// 	rejectUnauthorized: false,
+	//   }),
 	})
 	  .then(async (response) => {
 		if (!response.ok) {
@@ -58,12 +61,10 @@ export function showLoginForm()
 				<p class="text-lg font-mono ">Playable game built only with variables and conditions.</p>
 			</div>
 			<form id="loginForm" class="flex flex-col space-y-4">
-			<form action="http"//localhost:5000/register" method="POST">
-				<input type="text" autocomplete="given-name" id="username" placeholder="Username" class="bg-white text-black p-2" required>
-				<input type="password" autocomplete="given-name" id="password" placeholder="Password" class="bg-white text-black p-2" required>
+				<input type="text" id="username" placeholder="Username" class="bg-white text-black p-2" required>
+				<input type="password" id="password" placeholder="Password" class="bg-white text-black p-2" required>
 				<button type="submit" class="bg-white font-mono text-black px-12 py-1 hover:bg-gray-200 transition">Login</button>
 				<button type="button" id="backBtn" class="mt-4 text-white underline font-mono">← Back</button>
-			</form>
 			</form>
 		</div>
 		<div class="text-sm font-mono text-center mt-auto">
