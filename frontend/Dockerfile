@@ -15,12 +15,8 @@ COPY ./frontend/ .
 
 COPY ./cert /app/cert/
 
-# Initialize Tailwind CSS configuration using the CLI
-RUN npx tailwindcss@3.4.1 init
-
 EXPOSE 3000
 
-# Build CSS
-RUN npm run build:css
+RUN npm run build
 
 CMD ["npm", "run", "dev"]

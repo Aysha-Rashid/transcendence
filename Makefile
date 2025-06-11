@@ -27,6 +27,7 @@ clean:
 		rm -rf cert; \
 		rm -rf ./backend/cert;\
 		rm -rf ./frontend/cert;\
+		rm -rf ./frontend/dist;\
 		echo "Removing all the containers."; \
 	else \
 		echo "No containers to stop/remove."; \

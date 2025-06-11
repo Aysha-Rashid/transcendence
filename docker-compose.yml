@@ -12,6 +12,7 @@ services:
       - ./cert:/app/cert
       - ./frontend:/app
       - /app/node_modules
+      # - ./frontend/dist:/app/dist
     depends_on:
       - backend
     env_file:

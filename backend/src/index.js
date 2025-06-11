@@ -31,7 +31,7 @@ const fastify = require('fastify')({
 const cors = require('@fastify/cors');
 
 fastify.register(cors, {
-  origin: 'https://localhost:3000', // Allow all origins
+  origin: "*", // Allow all origins
   methods: ['GET', 'POST', 'OPTIONS'], // Allow preflight requests
   allowedHeaders: ['Content-Type'],
 });

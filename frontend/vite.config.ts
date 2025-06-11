@@ -11,6 +11,7 @@ export default defineConfig({
       key: fs.readFileSync('./cert/key.pem'),
       cert: fs.readFileSync('./cert/cert.pem'),
     },
+    publicDir: 'dist',
   },
   css: {
     postcss: {
