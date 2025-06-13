@@ -20,7 +20,7 @@ else
     echo "Generating certificates..."
     mkdir -p "$CERT_DIR"
     if ! openssl req -x509 -newkey rsa:2048 -days 365 -nodes \
-        -keyout "$KEY_FILE" -out "$CERT_FILE" -subj "/CN=localhost"; then
+        -keyout "$KEY_FILE" -out "$CERT_FILE" -subj "//CN=localhost"; then
         echo "Error: Certificate generation failed."
         exit 1
     fi

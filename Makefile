@@ -1,6 +1,6 @@
 NAME=apotheosis
 
-$(NAME): start-docker
+$(NAME):start-docker
 	chmod +x generate_cert.sh
 	./generate_cert.sh
 	docker-compose -f ./docker-compose.yml up --build -d

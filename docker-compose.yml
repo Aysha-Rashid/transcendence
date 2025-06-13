@@ -12,7 +12,6 @@ services:
       - ./cert:/app/cert
       - ./frontend:/app
       - /app/node_modules
-      # - ./frontend/dist:/app/dist
     depends_on:
       - backend
     env_file:
@@ -26,7 +25,6 @@ services:
     ports:
       - "5000:5000"
     volumes:
-      - ./backend/sqlite3.db:/app/sqlite3.db 
       - ./cert:/app/cert
       - ./backend:/app
       - /app/node_modules

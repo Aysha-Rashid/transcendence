@@ -12,6 +12,14 @@ export default defineConfig({
       cert: fs.readFileSync('./cert/cert.pem'),
     },
     publicDir: 'dist',
+    proxy: {
+      '/api': {
+        target: 'https://localhost:5000',
+        changeOrigin: true,
+        secure: false, // Allows self-signed certificates
+        ws: true, // Enable WebSocket support if needed
+      },
+    },
   },
   css: {
     postcss: {

@@ -1,15 +1,12 @@
 FROM node:18
 
-
 WORKDIR /app
 
 COPY ./backend/package*.json ./
 
-RUN npm install
-
 RUN apt-get update && apt-get install -y openssl sqlite3
 
-RUN npm install fastify@4 @fastify/cors@8 sqlite3 bcrypt jsonwebtoken dotenv openssl
+RUN npm install
 
 COPY ./backend/ ./
 

@@ -6,7 +6,6 @@ const { execSync } = require('child_process');
 const certDir = path.join(__dirname, '../cert/'); // Move up two levels to rootconsole.log(__dirname);
 const keyPath = path.join(certDir, 'key.pem');
 const certPath = path.join(certDir, 'cert.pem');
-console.log(keyPath);
 
 // Generate SSL certificates if they don't exist
 // if (!fs.existsSync(keyPath) || !fs.existsSync(certPath)) {
@@ -31,17 +30,21 @@ const fastify = require('fastify')({
 const cors = require('@fastify/cors');
 
 fastify.register(cors, {
-  origin: "*", // Allow all origins
+  origin: "https://localhost:3000",
   methods: ['GET', 'POST', 'OPTIONS'], // Allow preflight requests
-  allowedHeaders: ['Content-Type'],
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allow common headers
+  credentials: true, // Allow cookies or Authorization headers if needed
 });
 
 const authRoutes = require('./routes/auth');
 
 // Register your routes
 fastify.register(authRoutes);
-fastify.get('/', async (request, reply) => {
-  return { message: 'API is working' };
+fastify.get('/register', async (request, reply) => {
+  return { message: 'registeration is working' };
+});
+fastify.get('/login', async (request, reply) => {
+  return { message: 'login is working' };
 });
 
 fastify.listen({ port: 5000, host: '0.0.0.0' }, (err) => {
